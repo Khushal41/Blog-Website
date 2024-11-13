@@ -1,0 +1,58 @@
+<div class="form-group">
+    <!-- A Bootstrap form-group that groups the label and input field for the title -->
+
+    <label for="title">Title</label>
+    <!-- A label for the "title" input field -->
+
+    <input required value="<%=article.title%>" type="text" name="title" class="form-control">
+    <!-- 
+    An input field for the article title. 
+    - "required" ensures that this field must be filled before submitting the form.
+    - "value=<%=article.title%>" pre-populates the input with the article's current title using EJS (Embedded JavaScript).
+    - "type='text'" specifies that this is a text input.
+    - "name='title'" gives the input a name, used when sending form data.
+    - "class='form-control'" applies Bootstrap's styling to make the input look consistent with Bootstrap forms.
+    -->
+</div>
+
+<div class="form-group">
+    <!-- Another Bootstrap form-group, this time for the article description -->
+
+    <label for="description">Description</label>
+    <!-- A label for the "description" textarea field -->
+
+    <textarea name="description" id="description" class="form-control"><%=article.description%></textarea>
+    <!-- 
+    A textarea for the article description.
+    - "name='description'" defines the name of this field in the form submission.
+    - "id='description'" provides a unique ID to link with the label.
+    - "class='form-control'" applies Bootstrap's styling for consistency.
+    - "<%=article.description%>" is EJS syntax to pre-fill the textarea with the current article's description.
+    -->
+</div>
+
+<div class="form-group">
+    <!-- A form-group for the markdown content of the article -->
+
+    <label for="markdown">Markdown</label>
+    <!-- A label for the "markdown" textarea field -->
+
+    <textarea required name="markdown" id="markdown" class="form-control"><%=article.markdown%></textarea>
+    <!-- 
+    A textarea for the article's markdown content.
+    - "required" ensures the field must be filled before submitting the form.
+    - "name='markdown'" is the name used for the field in the form submission.
+    - "id='markdown'" provides a unique ID for this field.
+    - "class='form-control'" applies Bootstrap styling.
+    - "<%=article.markdown%>" pre-populates the field with the existing markdown content using EJS.
+    -->
+</div>
+
+<br>
+<!-- A line break for spacing -->
+
+<a href="/" class="btn btn-secondary">Cancel</a>
+<!-- A link styled as a Bootstrap secondary button that takes the user back to the homepage without saving any changes -->
+
+<button type="submit" class="btn btn-primary">Save</button>
+<!-- A submit button styled as a Bootstrap primary button, which submits the form when clicked -->

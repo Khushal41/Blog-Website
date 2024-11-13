@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Links to the Bootstrap 5.3.2 stylesheet, providing pre-built styles and components -->
+
+    <title>Blog Website</title>
+</head>
+
+<body>
+    <!-- Body of the document -->
+
+    <div class="container">
+        <!-- Bootstrap's container class to center and pad the content -->
+
+        <h1 class="mb-4">Blog Website</h1>
+        <!-- Main heading of the page with margin-bottom (mb-4) for spacing -->
+
+        <a href="/articles/new" class="btn btn-success">Create Article</a>
+        <!-- A button styled with Bootstrap's success color (green), linking to the page for creating a new article -->
+
+        <% articles.forEach(article=> { %>
+            <!-- 
+        EJS loop to iterate over an array of articles. 
+        For each article, it dynamically generates HTML content.
+        -->
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= article.title %>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= article.createdAt.toLocaleDateString() %>
+                    </div>
+                    <!-- 
+                    Displays the article's creation date in a localized format (toLocaleDateString) with muted text.
+                    The "mb-2" class adds a margin-bottom of 2 units for spacing.
+                    -->
+
+                    <div class="card-text mb-2">
+                        <%= article.description %>
+                    </div>
+                    <!-- Displays the article's description using EJS with margin-bottom (mb-2) for spacing -->
+
+                    <a href="articles/<%= article.slug %>" class="btn btn-primary">Read More</a>
+                    <!-- 
+                    A "Read More" button linking to the full article page using the article's slug for a clean URL.
+                    The button is styled with Bootstrap's primary color (blue).
+                    -->
+
+                    <a href="articles/edit/<%= article.id %>" class="btn btn-info">Edit</a>
+                    <!-- 
+                    An "Edit" button that links to the article's edit page using the article's ID. 
+                    Styled with Bootstrap's info color (light blue).
+                    -->
+
+                    <form action="/articles/<%= article.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <!-- 
+                        A form to handle the deletion of an article using the DELETE method.
+                        Since HTML forms only support GET and POST, "_method=DELETE" is used in conjunction with middleware (like method-override) to simulate a DELETE request.
+                        The form is styled with "d-inline" to ensure it stays inline with the other buttons.
+                        -->
+
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <!-- A submit button for the form, styled as a red danger button for deleting the article -->
+                    </form>
+                </div>
+            </div>
+
+            <% }) %>
+    </div>
+</body>
+
+</html>
