@@ -4,7 +4,6 @@ A dynamic Blog Website built using JavaScript, Node.js, and MongoDB that allows 
 
 ## Features
 
-- **User Authentication**: Secure user login and registration system.
 - **Post Management**: Create, edit, and delete blog posts.
 - **Responsive Design**: Optimized for both desktop and mobile views.
 - **Database**: Integrated with MongoDB for data storage and retrieval.
